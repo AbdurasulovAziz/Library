@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #493323;
+}
+
+nav{
+    padding-top: 20px;
+    border-bottom: 2px solid #ffdf91;
+}
+
+nav a {
+    color: #c4875c;
+}
+
+nav a:hover{
+    text-decoration: none;
+    color: #eaac7f;
+}
+
+.main_text{
+    text-align: center;
+    color: #ffdf91;
+    padding: 15px 0;
+}
+
+.navbar > .account > a:first-child {
+    padding-right: 5px;
+    border-right: 1px solid #c4875c;
+}
+
+.username {
+    color: #ffdf91;
+    border-right: 1px solid #ffdf91;
+    padding-right: 5px;
+}

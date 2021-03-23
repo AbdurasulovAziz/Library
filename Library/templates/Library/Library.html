@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'Library/css/Library.css' %}">
+    {% block title %}<title>Library</title>{% endblock %}
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <h2><a href="{% url 'home' %}">LibraryManagerSystem</a></h2>
+            <form action="" method="get">
+                {% csrf_token %}
+                <input type="text" name='q' placeholder="Поиск">
+                <button type="submit">Найти</button>
+            </form>
+            <div class="account">
+                {% if user.is_authenticated %}
+                <span class='username'>{{user.username}}</span>
+                <a href="/logout">Выйти</a>
+                {% else %}
+                <a href="{% url 'registration' %}">Регистрация</a>
+                <a href="/login">Авторизация</a>
+                {% endif %}
+            </div>
+        </nav>
+    {% block content %}
+        <section class='main'>
+            <h1 class="main_text">Добро пожаловать в Библиотеку</h1>
+            {% for el in books %}
+            <div class="alert alert-warning d-flex justify-content-between">
+                <h3>{{el.title}}</h3>
+                {% if user.is_authenticated%}
+                <a href="{% url 'book' el.id %}" class="btn btn-warning">Читать</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </section>
+    {% endblock %}
+    </div>
+</body>
+</html>

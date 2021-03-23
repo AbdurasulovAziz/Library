@@ -1,0 +1,14 @@
+{% extends 'Library/Library.html' %}
+
+{% block title %} <title>Регистрация</title> {% endblock %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<h1 class="main_text">Регистрация</h1>
+<form method="POST" class="form_group" >
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+</form>
+{% endblock%}
